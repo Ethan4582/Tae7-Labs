@@ -54,7 +54,7 @@ export default function Explosion({
   footerRef,
   config: userConfig,
   images = [],
-}: ExplosionProps): JSX.Element {
+}: ExplosionProps) {
   const explosionContainerRef = useRef<HTMLDivElement | null>(null);
   const particlesRef = useRef<Particle[] | null>(null);
   const [explosionTriggered, setExplosionTriggered] = useState(false);

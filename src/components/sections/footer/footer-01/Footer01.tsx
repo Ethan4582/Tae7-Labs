@@ -5,7 +5,7 @@ import Explosion from "../../../ui/explosion/Explosion";
 import styles from "./footer-01.module.css";
 import { footerAssets } from "./data"
 
-export default function Footer01(): JSX.Element {
+export default function Footer01() {
    const footerRef = useRef<HTMLElement | null>(null);
 
    return (
