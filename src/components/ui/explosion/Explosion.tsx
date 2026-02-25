@@ -15,8 +15,8 @@ interface ExplosionProps {
     rotationSpeed: number;
     resetDelay: number;
   }>;
-  // supply image paths (defaults to /img1.png .. /img5.png)
-  imageCount?: number;
+  // supply image paths
+  images?: string[];
 }
 
 /* Particle class (keeps DOM update logic encapsulated) */
@@ -53,7 +53,7 @@ class Particle {
 export default function Explosion({
   footerRef,
   config: userConfig,
-  imageCount = 5,
+  images = [],
 }: ExplosionProps): JSX.Element {
   const explosionContainerRef = useRef<HTMLDivElement | null>(null);
   const particlesRef = useRef<Particle[] | null>(null);
@@ -71,7 +71,7 @@ export default function Explosion({
 
   const cfg = { ...defaultConfig, ...(userConfig || {}) };
 
-  const imagePaths = Array.from({ length: imageCount }, (_, i) => `/img${i + 1}.png`);
+  const imagePaths = images.length > 0 ? images : Array.from({ length: 10 }, (_, i) => `/img${i + 1}.png`);
 
   const createParticles = () => {
     const container = explosionContainerRef.current;
@@ -170,7 +170,7 @@ export default function Explosion({
       window.clearTimeout(initTimeout);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // intentionally empty: footerRef identity stable in usage
+  }, [images]); // footerRef identity stable in usage
 
   return <div className={styles.explosionContainer} ref={explosionContainerRef} aria-hidden />;
 }

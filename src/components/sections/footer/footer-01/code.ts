@@ -16,7 +16,6 @@ export default function Footer01(): JSX.Element {
       </section>
 
       <footer className={styles.footer} ref={footerRef}>
-        <h1 className={styles.title}>Future is in your hands</h1>
         <div className={styles.copyrightInfo}></div>
         <Explosion footerRef={footerRef} />
       </footer>
